@@ -103,7 +103,6 @@ class App extends Component {
       columns: [...Array(initialColmuns)],
       data: getInitialData()
     });
-    const sourceDataArray = this.hot.getSourceDataArray();
     this.setState({ markdown: markdownTable(getInitialData()) });
   }
 
