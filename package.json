@@ -11,6 +11,7 @@
     "react": "^16.8.6",
     "react-codemirror2": "^6.0.0",
     "react-dom": "^16.8.6",
+    "react-share": "^3.0.0",
     "react-scripts": "3.0.1",
     "remarkable": "^1.7.1"
   },

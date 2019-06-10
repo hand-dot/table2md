@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import Handsontable from "handsontable";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LineShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LineIcon,
+  EmailIcon
+} from "react-share";
 import "handsontable/dist/handsontable.full.min.css";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import "codemirror/lib/codemirror.css";
@@ -37,6 +47,39 @@ const Line = () => (
   <div
     style={{ marginTop: "2rem", width: "100%", borderBottom: "1px solid #999" }}
   />
+);
+
+const margin = { margin: "0.75rem 1rem" };
+
+const Share = ({ url }) => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "flex-start",
+      alignItems: "center"
+    }}
+  >
+    <TwitterShareButton url={url} style={margin}>
+      <TwitterIcon size={32} round />
+    </TwitterShareButton>
+    <FacebookShareButton url={url} style={margin}>
+      <FacebookIcon size={32} round />
+    </FacebookShareButton>
+    <LineShareButton url={url} style={margin}>
+      <LineIcon size={32} round />
+    </LineShareButton>
+    <EmailShareButton url={url} style={margin}>
+      <EmailIcon size={32} round />
+    </EmailShareButton>
+    <iframe
+      title="Star hand-dot/table2md on GitHub"
+      src="https://ghbtns.com/github-btn.html?user=hand-dot&repo=table2md&type=star&count=true&size=small"
+      width="80"
+      height="20"
+      frameBorder="0"
+      scrolling="0"
+    />
+  </div>
 );
 
 class App extends Component {
@@ -117,15 +160,15 @@ class App extends Component {
             alignItems: "center"
           }}
         >
-          <h1>📝 table2md</h1>
-          <iframe
-            title="Star hand-dot/table2md on GitHub"
-            src="https://ghbtns.com/github-btn.html?user=hand-dot&repo=table2md&type=star&count=true&size=small"
-            width="80"
-            height="20"
-            frameBorder="0"
-            scrolling="0"
-          />
+          <h1>
+            <span role="img" aria-label="logo">
+              📝
+            </span>
+            table2md
+          </h1>
+          <div>
+            <Share url="https://hand-dot.github.io/table2md/" />
+          </div>
         </div>
         <div
           style={{
@@ -136,7 +179,9 @@ class App extends Component {
           <span style={{ borderBottom: "1px solid" }}>
             Click right button.{" "}
           </span>
-          <span>👉</span>
+          <span role="img" aria-label="logo">
+            👉
+          </span>
           <button onClick={this.loadSampleData.bind(this)}>
             Load Sample Data
           </button>
