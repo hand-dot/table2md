@@ -117,7 +117,7 @@ class App extends Component {
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <span style={{ borderBottom: '1px solid' }}>Click this Button. </span>
+          <span style={{ borderBottom: '1px solid' }}>Click right button. </span>
           <span >👉</span>
           <button onClick={this.loadSampleData.bind(this)}>Load Sample Data</button>
         </div>
