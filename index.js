@@ -106,19 +106,24 @@ class App extends Component {
     return (
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
-          <h1>table2md</h1>
+          <h1>📝 table2md</h1>
           <iframe
             title="Star hand-dot/table2md on GitHub"
-            src={`https://ghbtns.com/github-btn.html?user=hand-dot&repo=table2md&type=star&count=true&size=small`}
+            src="https://ghbtns.com/github-btn.html?user=hand-dot&repo=table2md&type=star&count=true&size=small"
             width="80"
             height="20"
             frameBorder="0"
             scrolling="0"
           />
         </div>
-        <button onClick={this.loadSampleData.bind(this)}>Sample Data</button>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <span style={{ borderBottom: '1px solid' }}>Click this Button. </span>
+          <span >👉</span>
+          <button onClick={this.loadSampleData.bind(this)}>Load Sample Data</button>
+        </div>
+
         <Line />
-        <p>😆Table</p>
+        <p>😆You can edit like Excel!</p>
         <div style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '1rem' }}>
           <div>
             <label htmlFor="columns">columns</label>
