@@ -159,7 +159,13 @@ class App extends Component {
         <div style={{ marginTop: '2rem' }}>
           <a style={{ textDecoration: 'none', padding: '0 .6em' }} href="https://github.com/hand-dot/table2md">View the code</a>
           <a style={{ textDecoration: 'none', borderLeft: '1px solid #000', padding: '0 .6em' }} href="https://github.com/hand-dot/table2md/issues">Report a bug</a>
+          <a
+            style={{ textDecoration: 'none', borderLeft: '1px solid #000', padding: '0 .6em' }} href="https://github.com/hand-dot/table2md/blob/master/package.json">
+            Thanks for the OSS library!
+          </a>
         </div>
+
+
       </div>
     );
   }
