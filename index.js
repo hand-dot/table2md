@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import React from 'react';
-import debounce from 'lodash/debounce';
 import Handsontable from 'handsontable';
 import 'handsontable/dist/handsontable.full.min.css';
 import { Controlled as CodeMirror } from 'react-codemirror2';
