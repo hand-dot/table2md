@@ -10,11 +10,23 @@ body, html {
 }
 
 table {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  border-width: 0;
+  table-layout: fixed;
+  width: 0;
+  outline-width: 0;
+  cursor: default;
+  max-width: none;
+  max-height: none;
+}
+
+table {
   width: 100%;
   padding: 0;
 }
 table tr {
-  border-top: 1px solid #cccccc;
   background-color: white;
   margin: 0;
   padding: 0;
@@ -25,13 +37,11 @@ table tr:nth-child(2n) {
 table tr th {
   font-weight: bold;
   background-color: #f0f0f0; 
-  border: 1px solid #cccccc;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
 }
 table tr td {
-  border: 1px solid #cccccc;
   text-align: left;
   margin: 0;
   padding: 6px 13px;
