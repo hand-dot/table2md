@@ -30,13 +30,15 @@ class App extends Component {
     this.state = {
       columns: 5,
       rows: 10,
-      markdown: 'hello'
+      preview: 'md',
+      markdown: ''
     };
   }
 
   componentDidMount() {
     const self = this;
     this.hot = new Handsontable(this.table, {
+      stretchH: 'all',
       columns: [...Array(self.state.columns)],
       data: get2DArray(self.state.rows, self.state.columns),
       afterChange(changes, source) {
@@ -56,13 +58,27 @@ class App extends Component {
   handleInput(input, e) {
     const value = Number(e.target.value);
     if (value < 1) return;
-    this.setState({ [input]: value });
+    const columns = input === 'columns' ? value : this.state.columns;
+    const rows = input === 'rows' ? value : this.state.rows;
+    this.hot.updateSettings({
+      columns: [...Array(columns)],
+      data: get2DArray(rows, columns)
+    })
+    this.forceUpdate(() => {
+      const sourceDataArray = this.hot.getSourceDataArray();
+      this.setState({ [input]: value, markdown: markdownTable(sourceDataArray) })
+    });
+  }
+
+  handlePreview(e) {
+    this.setState({ preview: e.target.value })
   }
 
   render() {
-    const { columns, rows, markdown } = this.state;
+    const { columns, rows, preview, markdown } = this.state;
     return (
       <div>
+        <p>😆Table Setting</p>
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div>
             <label htmlFor="columns">columns</label>
@@ -75,14 +91,27 @@ class App extends Component {
           </div>
         </div>
         <div ref={(node) => { this.table = node; }} />
-        <CodeMirror
+        <div style={{ marginTop: '2rem', width: '100%', borderBottom: '1px solid #999' }} />
+        <p>😁Preview Mode</p>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <div>
+            <label htmlFor="preview-md">MarkDown</label>
+            <input id="preview-md" checked={preview === 'md'} onChange={this.handlePreview.bind(this)} type="radio" value="md" />
+          </div>
+          <span>/</span>
+          <div>
+            <label htmlFor="preview-html">HTML</label>
+            <input id="preview-html" checked={preview === 'html'} onChange={this.handlePreview.bind(this)} type="radio" value="html" />
+          </div>
+        </div>
+        {preview === 'md' ? (<CodeMirror
           value={markdown}
           options={editorOptions}
-        />
-        <div
+        />) : (<div
           className="preview"
           dangerouslySetInnerHTML={this.getRawMarkup()}
-        />
+        />)}
+
       </div>
     );
   }
