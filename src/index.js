@@ -116,8 +116,7 @@ class App extends Component {
     return { __html: md.render(this.state.markdown) };
   }
   handleTableSetting(input, e) {
-    const value = Number(e.target.value);
-    if (value < 1) return;
+    const value = Number(e.target.value) < 1 ? 1 : Number(e.target.value);
     const columns = input === "columns" ? value : this.state.columns;
     const rows = input === "rows" ? value : this.state.rows;
     this.hot.updateSettings({
